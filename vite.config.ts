@@ -5,12 +5,14 @@ import react from '@vitejs/plugin-react';
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, '.', '');
     return {
+      base: './', // <--- هذا السطر ضروري جداً لحل مشكلة الشاشة البيضاء
       server: {
         port: 3000,
         host: '0.0.0.0',
       },
       plugins: [react()],
       define: {
+        // تأكد أن هذه المتغيرات موجودة في إعدادات Vercel أيضاً
         'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
         'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
       },
@@ -18,6 +20,10 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
+      },
+      // إضافة هذا القسم للتأكد من مجلد المخرجات
+      build: {
+        outDir: 'dist',
       }
     };
 });
