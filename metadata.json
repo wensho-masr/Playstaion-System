@@ -1,0 +1,5 @@
+{
+  "name": "PlayStation Management System",
+  "description": "A comprehensive system for managing gaming centers, featuring real-time device tracking, drink orders, pre-booking with auto-start, inventory, and themed interfaces (Al Ahly, Ramadan, Night).",
+  "requestFramePermissions": []
+}
