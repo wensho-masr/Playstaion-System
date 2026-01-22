@@ -11,11 +11,8 @@ export default defineConfig(({ mode }) => {
         host: '0.0.0.0',
       },
       plugins: [react()],
-      define: {
-        // تأكد أن هذه المتغيرات موجودة في إعدادات Vercel أيضاً
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
-      },
+define: {
+  'import.meta.env.VITE_GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
       resolve: {
         alias: {
           '@': path.resolve(__dirname, '.'),
